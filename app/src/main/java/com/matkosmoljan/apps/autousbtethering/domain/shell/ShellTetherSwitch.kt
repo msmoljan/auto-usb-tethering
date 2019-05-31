@@ -28,8 +28,8 @@ class ShellTetherSwitch : TetherSwitch {
         val currentApiVersion = Build.VERSION.SDK_INT
 
         return androidApiVersionToMethodNumbers
-            .filterKeys { api -> api >= currentApiVersion }
-            .minBy { entry -> entry.key }
+            .filterKeys { api -> api <= currentApiVersion }
+            .maxBy { entry -> entry.key }
             ?.value
             ?: throw NullPointerException("A method number hasn't been found. This should be impossible.")
     }

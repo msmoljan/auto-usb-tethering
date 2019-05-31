@@ -2,8 +2,8 @@ package com.matkosmoljan.apps.autousbtethering.domain.shell
 
 private const val METHOD_NUMBER_PLACEHOLDER = "[METHOD_NUMBER]"
 private const val USB_TETHERING_SWITCH_COMMAND = "su -c service call connectivity $METHOD_NUMBER_PLACEHOLDER i32"
-private const val USB_TETHERING_SWITCH_ON_COMMAND = "$USB_TETHERING_SWITCH_COMMAND 0"
-private const val USB_TETHERING_SWITCH_OFF_COMMAND = "$USB_TETHERING_SWITCH_COMMAND 1"
+private const val USB_TETHERING_SWITCH_ON_COMMAND = "$USB_TETHERING_SWITCH_COMMAND 1"
+private const val USB_TETHERING_SWITCH_OFF_COMMAND = "$USB_TETHERING_SWITCH_COMMAND 0"
 
 
 /**
