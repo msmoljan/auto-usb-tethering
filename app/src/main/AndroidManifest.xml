@@ -25,7 +25,7 @@
         </activity>
 
         <receiver
-                android:name=".domain.BootCompletedReceiver"
+                android:name=".domain.receivers.BootCompletedReceiver"
                 android:enabled="true">
 
             <intent-filter>

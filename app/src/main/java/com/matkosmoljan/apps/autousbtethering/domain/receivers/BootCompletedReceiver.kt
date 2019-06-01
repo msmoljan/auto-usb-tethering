@@ -1,4 +1,4 @@
-package com.matkosmoljan.apps.autousbtethering.domain
+package com.matkosmoljan.apps.autousbtethering.domain.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
