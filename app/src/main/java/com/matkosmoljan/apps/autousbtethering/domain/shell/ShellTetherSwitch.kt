@@ -2,6 +2,7 @@ package com.matkosmoljan.apps.autousbtethering.domain.shell
 
 import android.os.Build
 import android.os.Build.VERSION_CODES.*
+import com.matkosmoljan.apps.autousbtethering.FunctionResult
 import com.matkosmoljan.apps.autousbtethering.domain.TetherSwitch
 import java.io.DataOutputStream
 
@@ -17,11 +18,16 @@ class ShellTetherSwitch : TetherSwitch {
         N to 33
     )
 
-    override fun turnTetheringOn() {
+    override fun turnTetheringOn(): FunctionResult<Unit> {
         val methodNumber = getMethodNumber()
         val tetheringShellCommand = TetherSwitchShellCommandGenerator.generateSwitchOnCommand(methodNumber)
+        val isCommandExecutedSuccessfully = executeCommand(tetheringShellCommand)
 
-        executeCommand(tetheringShellCommand)
+        return if (isCommandExecutedSuccessfully) {
+            FunctionResult.Success(Unit)
+        } else {
+            FunctionResult.Failure(IllegalStateException("The tethering shell call hasn't returned successfully"))
+        }
     }
 
     private fun getMethodNumber(): Int {

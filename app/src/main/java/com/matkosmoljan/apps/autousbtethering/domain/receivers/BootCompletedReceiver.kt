@@ -11,6 +11,7 @@ class BootCompletedReceiver : BroadcastReceiver() {
 
     override fun onReceive(context: Context, intent: Intent) {
         if (intent.action == ACTION_LOCKED_BOOT_COMPLETED || intent.action == ACTION_BOOT_COMPLETED) {
+            // Start main activity once at boot to check if the tethering has been switched on
             MainActivity
                 .createIntent(context)
                 .let(context::startActivity)

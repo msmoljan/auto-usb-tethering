@@ -1,13 +1,13 @@
 package com.matkosmoljan.apps.autousbtethering
 
+import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.matkosmoljan.apps.autousbtethering.domain.TetherSwitch
 import org.koin.android.ext.android.inject
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : Activity() {
 
     companion object {
         fun createIntent(context: Context) = Intent(context, MainActivity::class.java)
@@ -19,6 +19,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        tetherSwitch.turnTetheringOn()
+        tetherSwitch.turnTetheringOn().fold(
+            onSuccess = { finish() },
+            onFailure = { showError(it) }
+        )
+    }
+
+    private fun showError(exception: Throwable) {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

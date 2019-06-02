@@ -30,7 +30,19 @@
 
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED"/>
-                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </receiver>
+
+        <receiver
+                android:name=".domain.receivers.UsbAttachedReceiver"
+                android:enabled="true">
+
+            <intent-filter>
+                <action android:name="android.hardware.usb.action.USB_STATE"/>
+                <action android:name="android.hardware.usb.action.USB_DEVICE_ATTACHED"/>
 
                 <category android:name="android.intent.category.DEFAULT"/>
             </intent-filter>
