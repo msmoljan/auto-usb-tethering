@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Auto USB Tethering</string>
+
+    <string name="root_error_message">The application wasn\'t able to activate USB tethering. Please make sure you have
+        root permissions.
+    </string>
 </resources>

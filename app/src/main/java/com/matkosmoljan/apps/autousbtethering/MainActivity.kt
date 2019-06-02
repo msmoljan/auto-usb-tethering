@@ -4,7 +4,10 @@ import android.app.Activity
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import com.matkosmoljan.apps.autousbtethering.domain.TetherSwitch
+import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.inject
 
 class MainActivity : Activity() {
@@ -20,12 +23,21 @@ class MainActivity : Activity() {
         setContentView(R.layout.activity_main)
 
         tetherSwitch.turnTetheringOn().fold(
-            onSuccess = { finish() },
+            onSuccess = {
+                hideError()
+                finish()
+            }
+            ,
             onFailure = { showError(it) }
         )
     }
 
+    private fun hideError() {
+        errorMessageView.visibility = View.GONE
+    }
+
     private fun showError(exception: Throwable) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+        Log.e("MainActivity", exception.message)
+        errorMessageView.visibility = View.VISIBLE
     }
 }
