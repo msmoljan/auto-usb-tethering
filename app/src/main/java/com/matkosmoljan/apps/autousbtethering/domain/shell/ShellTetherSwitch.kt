@@ -15,7 +15,9 @@ class ShellTetherSwitch : TetherSwitch {
     private val androidApiVersionToMethodNumbers = mapOf(
         KITKAT to 34,
         LOLLIPOP to 30,
-        N to 33
+        N to 33,
+        O to 34,
+        P to 33
     )
 
     override fun turnTetheringOn(): FunctionResult<Unit> {
